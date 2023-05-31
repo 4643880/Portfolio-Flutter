@@ -16,12 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1920, 1080),
+      designSize:
+          GetPlatform.isMobile ? const Size(375, 771) : const Size(1920, 1080),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
-          title: 'Aizaz   ',
+          title: 'Aizaz ',
           debugShowCheckedModeBanner: false,
           initialRoute: RouteHelper.routeHomeScreen,
           getPages: RouteHelper.routes,
