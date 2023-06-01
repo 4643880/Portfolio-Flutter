@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LanguageWidget extends StatelessWidget {
@@ -14,8 +15,8 @@ class LanguageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.h,
-      width: 150.w,
+      // height: GetPlatform.isMobile ? 176.h : 200.h,
+      // width: GetPlatform.isMobile ? 122.w : 150.w,
       // color: Colors.red,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

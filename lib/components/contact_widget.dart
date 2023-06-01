@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_app/components/common_button.dart';
 import 'package:portfolio_app/components/my_text_field.dart';
@@ -12,7 +13,11 @@ class ContactWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 1.sw > 500 ? 1920.w / 1.62 : 1920.w / 1.33,
+      height: GetPlatform.isMobile
+          ? 960.h
+          : 1.sw > 500
+              ? 1920.w / 1.62
+              : 1920.w / 1.33,
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: RadialGradient(
@@ -25,11 +30,11 @@ class ContactWidget extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 1920.w / 13.52,
+            height: GetPlatform.isMobile ? 62.h : 1920.w / 13.52,
           ),
           const CommonButton(text: "CONTACT"),
           SizedBox(
-            height: 1920.w / 32,
+            height: GetPlatform.isMobile ? 40.h : 1920.w / 32,
           ),
           Container(
             width: 763.w,
@@ -53,7 +58,7 @@ class ContactWidget extends StatelessWidget {
             // width: 785.w,
           ),
           SizedBox(
-            height: 1920.w / 15,
+            height: GetPlatform.isMobile ? 65.h : 1920.w / 15,
           ),
           const MyTextField(
             label: "ENTER YOUR NAME *",

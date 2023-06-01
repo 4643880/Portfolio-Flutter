@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CommonButton extends StatelessWidget {
@@ -12,7 +13,9 @@ class CommonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+      padding: GetPlatform.isMobile
+          ? EdgeInsets.symmetric(horizontal: 12.r, vertical: 10.r)
+          : EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
       decoration: BoxDecoration(
         border: Border.all(
           width: 08.w,
@@ -23,8 +26,8 @@ class CommonButton extends StatelessWidget {
         text,
         style: GoogleFonts.montserrat(
           fontWeight: FontWeight.w700,
-          fontSize: 30.sp,
-          letterSpacing: 25.w,
+          fontSize: GetPlatform.isMobile ? 14.sp : 30.sp,
+          letterSpacing: GetPlatform.isMobile ? 10.w : 25.w,
         ),
       ),
     );

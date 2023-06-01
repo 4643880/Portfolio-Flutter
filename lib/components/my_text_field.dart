@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class MyTextField extends StatelessWidget {
   final String label;
@@ -13,10 +14,9 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 1920.w / 3.14,
-      height: 1.sw > 500
-          ? (1920.w / 40) * (maxLines ?? 1.5)
-          : (1920.w / 40) * (maxLines ?? 3),
+      width: GetPlatform.isMobile ? 244 : 1920.w / 3.14,
+      height: 1.sw > 400 ? (1920.w / 40) * (maxLines ?? 1.5) : null,
+      // : (1920.w / 40) * (maxLines ?? 1),
       decoration: BoxDecoration(
         // color: Colors.red,
         border: Border(
@@ -31,6 +31,7 @@ class MyTextField extends StatelessWidget {
         ),
         child: TextField(
           decoration: InputDecoration(
+            alignLabelWithHint: true,
             label: Align(
               alignment: Alignment.topLeft,
               child: Text(

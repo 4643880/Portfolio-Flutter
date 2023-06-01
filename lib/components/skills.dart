@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SkillsWidget extends StatelessWidget {
@@ -17,8 +18,9 @@ class SkillsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 1920.w / 10.84,
-      width: 516.w,
+      height: GetPlatform.isMobile ? 151.h : 1920.w / 10.84,
+      width: GetPlatform.isMobile ? 249.w : 516.w,
+      // color: Colors.orange,
       child: Stack(
         children: [
           Image.asset(
