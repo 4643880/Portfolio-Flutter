@@ -17,13 +17,13 @@ class SkillsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: GetPlatform.isMobile ? 151.h : 1920.w / 10.84,
       width: GetPlatform.isMobile ? 249.w : 516.w,
       // color: Colors.orange,
       child: Stack(
         children: [
-          Image.asset(
+          Image.network(
             img,
             fit: BoxFit.fitHeight,
             height: 64.h,

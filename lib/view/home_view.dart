@@ -1,9 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_app/components/about_me.dart';
 import 'package:portfolio_app/components/contact_widget.dart';
 import 'package:portfolio_app/components/description.dart';
@@ -35,27 +32,23 @@ class HomeView extends StatelessWidget {
               // ============================================
               // Description
               // ============================================
-              kIsWeb == true
-                  ? GetPlatform.isMobile
-                      ? const DescriptionWidget()
-                      : const DescriptionWidget()
-                  : const DescriptionWidget(),
+              const DescriptionWidget(),
               // ============================================
               // About Me
               // ============================================
-              GetPlatform.isWeb ? AboutMeWidget() : AboutMeWidget(),
+              const AboutMeWidget(),
               // ============================================
               // Portfolio
               // ============================================
-              GetPlatform.isWeb ? PortfolioWidget() : PortfolioWidget(),
+              const PortfolioWidget(),
               // ============================================
               // Contact
               // ============================================
-              GetPlatform.isWeb ? ContactWidget() : ContactWidget(),
+              const ContactWidget(),
               // ============================================
               // Footer
               // ============================================
-              GetPlatform.isWeb ? FooterWidget() : FooterWidget(),
+              const FooterWidget(),
             ],
           ),
         ),

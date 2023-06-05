@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:portfolio_app/view/home_view.dart';
-import 'package:portfolio_app/view/testing.dart';
 
 class RouteHelper {
   static const initial = "/";
