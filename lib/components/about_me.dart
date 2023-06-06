@@ -79,7 +79,7 @@ class AboutMeWidget extends StatelessWidget {
                 SizedBox(
                   height: GetPlatform.isMobile ? 61.h : 1920.w / 17.7,
                 ),
-                Container(
+                SizedBox(
                   width: 1066.w,
                   height: GetPlatform.isMobile ? 490.h : 1920.w / 5.14,
                   child: Column(
@@ -170,7 +170,7 @@ class AboutMeWidget extends StatelessWidget {
                 ),
                 const CommonButton(text: "SKILLS"),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     width: 1004.w,
                     // height: 1920.w / 1.92,
                     // color: Colors.orange,

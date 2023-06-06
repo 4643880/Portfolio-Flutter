@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -31,8 +32,9 @@ class DescriptionWidget extends StatelessWidget {
                             width: 1350.w,
                           ),
                     GetPlatform.isMobile
-                        ? Image.network(
-                            snapshot.data?.docs.first.data()["bg_mob"],
+                        ? CachedNetworkImage(
+                            imageUrl:
+                                snapshot.data?.docs.first.data()["bg_mob"],
 
                             // "assets/images/ITB.png",
                             // fit: BoxFit.cover,
@@ -40,8 +42,9 @@ class DescriptionWidget extends StatelessWidget {
                             width: 301.w,
                             // width: 400.w,
                           )
-                        : Image.network(
-                            snapshot.data?.docs.first.data()["bg_web"],
+                        : CachedNetworkImage(
+                            imageUrl:
+                                snapshot.data?.docs.first.data()["bg_web"],
                             // "assets/images/Logo ITB.png",
                             // fit: BoxFit.cover,
                             height: 368.h,

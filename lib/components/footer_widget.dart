@@ -15,6 +15,7 @@ class FooterWidget extends StatelessWidget {
     return FutureBuilder(
       future: Get.find<HomeController>().getFooter(),
       builder: (context, snapshot) {
+        // print(snapshot.data?.docs.first.data()['fb']);
         if (snapshot.hasData) {
           return Container(
             height: GetPlatform.isMobile ? 289.h : 1920.w / 5.88,

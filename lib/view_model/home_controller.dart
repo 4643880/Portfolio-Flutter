@@ -2,9 +2,25 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_app/utils/utils.dart';
+import 'dart:developer' as devtools show log;
 
 class HomeController extends GetxController {
   RxInt currentIndex = 3.obs;
+
+  @override
+  void onInit() {
+    accessDataOffline_configure();
+    super.onInit();
+  }
+
+  void accessDataOffline_configure() async {
+    // [START access_data_offline_configure_offline_persistence]
+    // Apple and Android
+    FirebaseFirestore.instance.settings = const Settings(
+      persistenceEnabled: true,
+      cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+    );
+  }
 
   // =====================================================
   // Fetching Logo and Menu Items from Firebase
@@ -19,11 +35,21 @@ class HomeController extends GetxController {
         Utils.dismiss();
         return snapshot;
       } catch (e) {
+        devtools.log(e.toString());
+        Utils.showErrorSnackBar("internet_not_available".tr);
+        return null;
+      }
+    } else {
+      try {
+        QuerySnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection("top-bar").get();
+        return snapshot;
+      } catch (e) {
+        devtools.log(e.toString());
         Utils.showErrorSnackBar("internet_not_available".tr);
         return null;
       }
     }
-    return null;
   }
 
   // =====================================================
@@ -40,11 +66,20 @@ class HomeController extends GetxController {
         Utils.dismiss();
         return snapshot;
       } catch (e) {
+        devtools.log(e.toString());
+        return null;
+      }
+    } else {
+      try {
+        QuerySnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection("header").get();
+        return snapshot;
+      } catch (e) {
+        devtools.log(e.toString());
         Utils.showErrorSnackBar("internet_not_available".tr);
         return null;
       }
     }
-    return null;
   }
 
   // =====================================================
@@ -61,11 +96,20 @@ class HomeController extends GetxController {
         Utils.dismiss();
         return snapshot;
       } catch (e) {
+        devtools.log(e.toString());
+        return null;
+      }
+    } else {
+      try {
+        QuerySnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection("description").get();
+        return snapshot;
+      } catch (e) {
+        devtools.log(e.toString());
         Utils.showErrorSnackBar("internet_not_available".tr);
         return null;
       }
     }
-    return null;
   }
 
   // =====================================================
@@ -82,11 +126,20 @@ class HomeController extends GetxController {
         Utils.dismiss();
         return snapshot;
       } catch (e) {
+        devtools.log(e.toString());
+        return null;
+      }
+    } else {
+      try {
+        QuerySnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection("aboutMe").get();
+        return snapshot;
+      } catch (e) {
+        devtools.log(e.toString());
         Utils.showErrorSnackBar("internet_not_available".tr);
         return null;
       }
     }
-    return null;
   }
 
   // =====================================================
@@ -103,11 +156,20 @@ class HomeController extends GetxController {
         Utils.dismiss();
         return snapshot;
       } catch (e) {
+        devtools.log(e.toString());
+        return null;
+      }
+    } else {
+      try {
+        QuerySnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection("contact").get();
+        return snapshot;
+      } catch (e) {
+        devtools.log(e.toString());
         Utils.showErrorSnackBar("internet_not_available".tr);
         return null;
       }
     }
-    return null;
   }
 
   // =====================================================
@@ -117,6 +179,7 @@ class HomeController extends GetxController {
     bool internetAvailable = await internetAvailabilityCheck(false);
     if (internetAvailable) {
       try {
+        devtools.log("Reached 1");
         Utils.showLoading("Loading...");
         QuerySnapshot<Map<String, dynamic>> snapshot =
             await FirebaseFirestore.instance.collection("footer").get();
@@ -124,11 +187,21 @@ class HomeController extends GetxController {
         Utils.dismiss();
         return snapshot;
       } catch (e) {
+        devtools.log(e.toString());
+        return null;
+      }
+    } else {
+      try {
+        devtools.log("Reached 2");
+        QuerySnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection("footer").get();
+        return snapshot;
+      } catch (e) {
+        devtools.log(e.toString());
         Utils.showErrorSnackBar("internet_not_available".tr);
         return null;
       }
     }
-    return null;
   }
 
   // Checking Internet Connection
@@ -139,7 +212,7 @@ class HomeController extends GetxController {
         connectivityResult == ConnectivityResult.wifi) {
       return true;
     } else {
-      Utils.showErrorSnackBar("internet_not_available".tr);
+      // Utils.showErrorSnackBar("internet_not_available".tr);
       if (fromInternetCheckScreen == false) {
         // Get.offAllNamed(routeInternetNotAvailable);
       }

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,12 +10,15 @@ import 'package:portfolio_app/firebase_options.dart';
 import 'package:portfolio_app/get_di.dart' as di;
 
 Future<void> main() async {
-  di.init();
+  await di.init();
   // Firebase Initialization
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  if (kIsWeb) {
+    await FirebaseFirestore.instance.enablePersistence();
+  }
   runApp(const MyApp());
 }
 

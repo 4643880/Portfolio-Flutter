@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -23,13 +24,15 @@ class SkillsWidget extends StatelessWidget {
       // color: Colors.orange,
       child: Stack(
         children: [
-          Image.network(
-            img,
-            fit: BoxFit.fitHeight,
-            height: 64.h,
-            width: 61.w,
-            opacity: const AlwaysStoppedAnimation(0.07),
-            colorBlendMode: BlendMode.luminosity,
+          Opacity(
+            opacity: 0.07,
+            child: CachedNetworkImage(
+              imageUrl: img,
+              fit: BoxFit.fitHeight,
+              height: 64.h,
+              width: 61.w,
+              colorBlendMode: BlendMode.luminosity,
+            ),
           ),
           Positioned(
             left: 40.w,

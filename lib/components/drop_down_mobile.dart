@@ -49,6 +49,7 @@ class _DropDownMenuForMobileWidgetState
             ],
             onChanged: (value) {
               MenuItems.onChanged(context, value as MenuItem);
+              print(value.text);
             },
             dropdownStyleData: DropdownStyleData(
               width: double.infinity,

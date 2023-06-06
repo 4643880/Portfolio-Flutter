@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -53,8 +54,8 @@ class PortfolioWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final eachImage = snapshot.data?.docs.first
                         .data()["portfolio-list"][index];
-                    return Image.network(
-                      eachImage,
+                    return CachedNetworkImage(
+                      imageUrl: eachImage,
                       fit: BoxFit.cover,
                       height: 400.h,
                       width: 640.w,
